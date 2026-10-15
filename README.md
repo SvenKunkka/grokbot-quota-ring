@@ -1,10 +1,10 @@
 # grokbot-quota-ring
 
-A [SwiftBar](https://github.com/swiftbar/SwiftBar) plugin that shows your remaining Grok Bot weekly quota as a ring in the macOS menu bar. It shows no text or percentage in the bar itself.
+A [SwiftBar](https://github.com/swiftbar/SwiftBar) plugin that shows your remaining Grok Bot weekly quota as a small filled pie in the macOS menu bar. It shows no text or percentage in the bar itself.
 
-- Full green ring = full quota; the ring shortens and shifts green → yellow → red as quota drains.
+- Full green disc = full quota; the pie (clockwise from 12 o'clock) shrinks and shifts green → yellow → red as quota drains.
 - Empty gray outline = no quota (or not authorized yet).
-- Dimmed ring = last fetch failed; the dropdown shows the last value and when it was fetched.
+- Dimmed pie = last fetch failed; the dropdown shows the last value and when it was fetched.
 - Dropdown: remaining %, reset time, refresh, link to the usage page.
 
 ## Install

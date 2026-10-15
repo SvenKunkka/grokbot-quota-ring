@@ -22,24 +22,27 @@ def color_for(rem):
     return lerp(RED, YELLOW, f / 0.5) if f < 0.5 else lerp(YELLOW, GREEN, (f - 0.5) / 0.5)
 
 def ring_png(rem, dim=False, size=36):
+    """Filled pie, 14pt diameter on an 18pt canvas, drawn at 2x (36px, 144 dpi)."""
     from PIL import Image, ImageDraw
-    S = size * 4  # supersample
+    k = 8; S = size * k
     img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    w = int(S * 0.13); pad = w // 2 + 4
-    box = [pad, pad, S - pad, S - pad]
+    r = 14 * k  # 14pt diameter at 2x = 28px -> radius 14px
+    c0 = S // 2
+    box = [c0 - r, c0 - r, c0 + r, c0 + r]
     alpha = 110 if dim else 255
+    line = max(1, int(1.2 * k))  # ~0.6pt outline
     if rem is None or rem <= 0:
-        d.ellipse(box, outline=GRAY + (alpha,), width=max(4, w // 3))
+        d.ellipse(box, outline=GRAY + (alpha,), width=line)
     else:
         c = color_for(rem)
-        d.ellipse(box, outline=c + (60 if not dim else 35,), width=w)  # faint track
         if rem >= 99.5:
-            d.ellipse(box, outline=c + (alpha,), width=w)
+            d.ellipse(box, fill=c + (alpha,))
         else:
-            d.arc(box, -90, -90 + 360 * rem / 100.0, fill=c + (alpha,), width=w)
+            d.pieslice(box, -90, -90 + 360 * rem / 100.0, fill=c + (alpha,))
+        d.ellipse(box, outline=c + (alpha,), width=line)
     img = img.resize((size, size), Image.LANCZOS)
-    buf = io.BytesIO(); img.save(buf, "PNG"); return buf.getvalue()
+    buf = io.BytesIO(); img.save(buf, "PNG", dpi=(144, 144)); return buf.getvalue()
 
 def keychain_cookie():
     try:
