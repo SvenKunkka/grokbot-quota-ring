@@ -1,3 +1,7 @@
+<!-- SVENKUNKKA-README-NAV:BEGIN -->
+[中文项目说明](#project-overview-zh) · [English overview](#project-overview-en) · [维护者 X / Maintainer on X](https://x.com/Svenu1s5)
+<!-- SVENKUNKKA-README-NAV:END -->
+
 # grokbot-quota-ring
 
 A [SwiftBar](https://github.com/swiftbar/SwiftBar) plugin that shows your remaining Grok Bot weekly quota as a small filled pie in the macOS menu bar. It shows no text or percentage in the bar itself.
@@ -29,3 +33,30 @@ Test without network: `GROKBOT_QUOTA_FAKE=60 python3 quota.5m.py` (or `0`, `fail
 ## License
 MIT
 ![states](docs/preview.png)
+
+
+---
+
+<!-- SVENKUNKKA-PROJECT-INFO:BEGIN -->
+
+<a id="project-overview-zh"></a>
+## 中文项目说明
+
+macOS SwiftBar 插件，以菜单栏饼图显示 Grok Bot 每周剩余额度；颜色与扇区随额度变化，下拉菜单显示剩余比例、重置时间和最近获取状态。
+
+**使用入口：** 安装 SwiftBar 与 Pillow，将 `quota.5m.py` 放入插件目录；安装、授权和手动数据模式见原说明，可用 `GROKBOT_QUOTA_FAKE=60 python3 quota.5m.py` 离线预览。
+
+**范围说明：** 依赖 cursor.com 未公开接口，可能随服务变化失效；授权信息按原流程保存在 macOS 钥匙串。
+
+<a id="project-overview-en"></a>
+## English project overview
+
+A macOS SwiftBar plugin that shows remaining weekly Grok Bot quota as a menu-bar pie chart. Color and area change with usage; the dropdown includes remaining quota, reset time, and fetch status.
+
+**Getting started:** Install SwiftBar and Pillow and place `quota.5m.py` in the plugin folder. See the original README for installation, authorization, and manual-data mode; preview offline with `GROKBOT_QUOTA_FAKE=60 python3 quota.5m.py`.
+
+**Scope:** Depends on an undocumented cursor.com endpoint that may change or break. The documented authorization flow stores credentials in macOS Keychain.
+
+**仓库维护者 / Repository maintainer:** [SvenKunkka](https://github.com/SvenKunkka) · [X / Twitter](https://x.com/Svenu1s5)
+
+<!-- SVENKUNKKA-PROJECT-INFO:END -->
